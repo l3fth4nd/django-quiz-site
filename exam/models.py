@@ -64,7 +64,7 @@ class Question(models.Model):
     answer_three = models.CharField(max_length=200, verbose_name='گزینه سه')
     answer_four = models.CharField(max_length=200, verbose_name='گزینه چهار')
     answer_true = models.IntegerField(choices=ANSWER_CHOICES, verbose_name='گزینه صحیح')
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name='وضعیت')
+    status = models.CharField(max_length=1, default='p', choices=STATUS_CHOICES, verbose_name='وضعیت')
     class Meta:
         verbose_name = 'سوال'
         verbose_name_plural = 'سوالات'

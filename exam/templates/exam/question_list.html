@@ -1,21 +1,15 @@
-{% load static %}
+{% extends 'exam/base.html' %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css" integrity="sha384-P4uhUIGk/q1gaD/NdgkBIl3a6QywJjlsFJFk7SPRdruoGddvRVSwv5qFnvZ73cpz" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'exam/master.css' %}">
-  </head>
-<body>
+{% block title %}{{quiz.title}}{% endblock %}
 
+{% block content %}
   <div class="exam-detail">
     <p class="alert alert-info exam_info" role="alert">{{quiz.title}}</p>
 
-    <form class="" action="/action_page.php">
+    <form class="" action="{% url 'exam:quiz_result' quiz.slug %}" method="post">{% csrf_token %}
       {% for question in questions %}
       <div class="jumbotron question">
-        <p>:{{question.title}}</p>
+        <p>{{question.title}}</p>
         <label for="1">{{question.answer_one}}</label>
         <input type="radio" id="answer_one" name="{{question.pk}}" value="1"><br>
         <label for="2">{{question.answer_two}}</label>
@@ -31,12 +25,4 @@
       </div>
     </form>
   </div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdn.rtlcss.com/bootstrap/v4.0.0/js/bootstrap.min.js" integrity="sha384-54+cucJ4QbVb99v8dcttx/0JRx4FHMmhOWi4W+xrXpKcsKQodCBwAvu3xxkZAwsH" crossorigin="anonymous"></script>
-
-</body>
-</html>
+{% endblock %}

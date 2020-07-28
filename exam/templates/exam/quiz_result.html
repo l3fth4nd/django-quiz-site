@@ -1,0 +1,7 @@
+{% extends 'exam/base.html' %}
+
+{% block title %}نتیجه آزمون{{quiz.title}}{% endblock %}
+
+{% block content %}
+<p class="alert alert-success exam_info" role="alert">شما به تعداد {{number_true_answer}} از {{quiz.count_question_publish}} پاسخ صحیح داده اید.</p>
+{% endblock %}
