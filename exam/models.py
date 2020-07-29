@@ -29,7 +29,8 @@ class Category(models.Model):
         return self.title
 
 class Quiz(models.Model):
-    title  = models.CharField(max_length=100, verbose_name='عنوان')
+    title  = models.CharField(max_length=150, verbose_name='عنوان')
+    description = models.CharField(max_length=250, verbose_name='توضیحات', blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default = 1, related_name='quiz', verbose_name='نویسنده')
     category = models.ManyToManyField(Category, default=None, null=True, blank=True, related_name='quiz', verbose_name='دسته بندی')
     slug   = models.SlugField(unique=True, verbose_name='آدرس')
@@ -44,7 +45,7 @@ class Quiz(models.Model):
 
     def category_to_str(self):
         return "، ".join([category.title for category in self.category.all()])
-    category_to_str.short_description = 'دسته بنی های'
+    category_to_str.short_description = 'دسته بندی ها'
 
     def count_question_publish(self):
         return self.question.filter(status='p').count()
@@ -68,10 +69,10 @@ class Question(models.Model):
     )
     title = models.CharField(max_length=300, verbose_name='عنوان')
     quiz  = models.ManyToManyField(Quiz, related_name='question', verbose_name='آموزن')
-    answer_one = models.CharField(max_length=200, verbose_name='گزینه یک')
-    answer_two = models.CharField(max_length=200, verbose_name='گزینه دو')
-    answer_three = models.CharField(max_length=200, verbose_name='گزینه سه')
-    answer_four = models.CharField(max_length=200, verbose_name='گزینه چهار')
+    answer_one = models.CharField(max_length=300, verbose_name='گزینه یک')
+    answer_two = models.CharField(max_length=300, verbose_name='گزینه دو')
+    answer_three = models.CharField(max_length=300, verbose_name='گزینه سه')
+    answer_four = models.CharField(max_length=300, verbose_name='گزینه چهار')
     answer_true = models.IntegerField(choices=ANSWER_CHOICES, verbose_name='گزینه صحیح')
     status = models.CharField(max_length=1, default='p', choices=STATUS_CHOICES, verbose_name='وضعیت')
     class Meta:
