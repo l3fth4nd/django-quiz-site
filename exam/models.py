@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 ##MANAGER
@@ -28,6 +30,7 @@ class Category(models.Model):
 
 class Quiz(models.Model):
     title  = models.CharField(max_length=100, verbose_name='عنوان')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default = 1, related_name='quiz', verbose_name='نویسنده')
     category = models.ManyToManyField(Category, default=None, null=True, blank=True, related_name='quiz', verbose_name='دسته بندی')
     slug   = models.SlugField(unique=True, verbose_name='آدرس')
     publish = models.DateTimeField(default=timezone.now, verbose_name='زمان انتشار')

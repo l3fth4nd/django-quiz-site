@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category,CategoryAdmin)
 
 class QuizAdmin(admin.ModelAdmin):
-    list_display  = ('title','slug','status','category_to_str','publish','count_question_publish')
+    list_display  = ('title', 'author','slug','status','category_to_str','publish','count_question_publish')
     list_filter   = ('status','publish','category')
     search_fields = ('title','slug')
     prepopulated_fields = {'slug': ('title',)}

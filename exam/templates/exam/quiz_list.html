@@ -10,7 +10,7 @@
           <small class="text-muted">{{ quiz.publish }}</small>
         </div>
         <p class="mb-1">dispriction</p>
-        <small class="text-muted">user created</small>
+        <small class="text-muted">{{ quiz.author.get_full_name }}</small>
       </a>
     {% endfor %}
   </div>
