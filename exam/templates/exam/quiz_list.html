@@ -1,0 +1,17 @@
+{% extends 'exam/base.html' %}
+
+
+{% block content %}
+  <div class="list-group quiz-list" style=" margin-top: 50px; margin-left: 70px; margin-right: 70px;">
+    {% for quiz in object_list %}
+      <a href="{% url 'exam:question_list' quiz.slug %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ quiz.title }}</h5>
+          <small class="text-muted">{{ quiz.publish }}</small>
+        </div>
+        <p class="mb-1">dispriction</p>
+        <small class="text-muted">user created</small>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

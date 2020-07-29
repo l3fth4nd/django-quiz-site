@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views.generic.list import ListView
 from .models import Question, Quiz, Category
 
 # Create your views here.
 
-def quiz_list(request):
-    return HttpResponse('hello')
+class QuizListView(ListView):
+    queryset = Quiz.objects.published()
+
+
 
 def question_list(request,slug):
     quiz = get_object_or_404(Quiz, slug=slug, status=True)

@@ -10,14 +10,14 @@
       {% for question in questions %}
       <div class="jumbotron question">
         <p>{{question.title}}</p>
-        <label for="1">{{question.answer_one}}</label>
-        <input type="radio" id="answer_one" name="{{question.pk}}" value="1"><br>
-        <label for="2">{{question.answer_two}}</label>
-        <input type="radio" id="answer_two" name="{{question.pk}}" value="2"><br>
-        <label for="3">{{question.answer_three}}</label>
-        <input type="radio" id="answer_three" name="{{question.pk}}" value="3"><br>
-        <label for="4">{{question.answer_four}}</label>
+        <input type="radio" id="answer_one" name="{{question.pk}}" value="1">
+        <label for="1">{{question.answer_one}}</label><br>
+        <input type="radio" id="answer_two" name="{{question.pk}}" value="2">
+        <label for="2">{{question.answer_two}}</label><br>
+        <input type="radio" id="answer_three" name="{{question.pk}}" value="3">
+        <label for="3">{{question.answer_three}}</label><br>
         <input type="radio" id="answer_four" name="{{question.pk}}" value="4">
+        <label for="4">{{question.answer_four}}</label>
       </div>
       {% endfor %}
         <div class="btn-exam-submit">

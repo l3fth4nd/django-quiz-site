@@ -7,6 +7,10 @@ class QuestionManager(models.Manager):
     def published(self):
         return self.filter(status='p')
 
+class QuizManager(models.Manager):
+    def published(self):
+        return self.filter(status=True)
+
 
 
 # Create your models here.
@@ -42,6 +46,8 @@ class Quiz(models.Model):
     def count_question_publish(self):
         return self.question.filter(status='p').count()
     count_question_publish.short_description = 'تعداد سوالات'
+
+    objects = QuizManager()
 
 
 
