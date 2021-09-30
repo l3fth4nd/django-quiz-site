@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.list import ListView
 from .models import Question, Quiz, Category
+
 
 # Create your views here.
 
@@ -33,3 +34,5 @@ def quiz_result(request,slug):
             'quiz' : quiz
         }
         return render(request, 'exam/quiz_result.html', context)
+    else:
+        return redirect(reverse('exam:question_list', args=[slug]))
