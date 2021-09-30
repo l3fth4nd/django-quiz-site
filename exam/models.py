@@ -32,7 +32,7 @@ class Quiz(models.Model):
     title  = models.CharField(max_length=150, verbose_name='عنوان')
     description = models.CharField(max_length=250, verbose_name='توضیحات', blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default = 1, related_name='quiz', verbose_name='نویسنده')
-    category = models.ManyToManyField(Category, default=None, null=True, blank=True, related_name='quiz', verbose_name='دسته بندی')
+    category = models.ManyToManyField(Category, default=None, blank=True, related_name='quiz', verbose_name='دسته بندی')
     slug   = models.SlugField(unique=True, verbose_name='آدرس')
     publish = models.DateTimeField(default=timezone.now, verbose_name='زمان انتشار')
     status = models.BooleanField(default=True, verbose_name='وضعیت انتشار')
