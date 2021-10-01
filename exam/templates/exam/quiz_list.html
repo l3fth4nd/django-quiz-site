@@ -10,7 +10,8 @@
           <small class="text-muted">{{ quiz.publish }}</small>
         </div>
         <p class="mb-1">{{ quiz.description }}</p>
-        <small class="text-muted">{{ quiz.author.get_full_name }}</small>
+        <small class="text-muted">طراح آزمون: {{ quiz.author.get_full_name }}</small>
+        <small class="text-muted">دسته بندی آزمون: {{ quiz.category_to_str }}</small>
       </a>
     {% endfor %}
   </div>
