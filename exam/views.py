@@ -36,3 +36,12 @@ def quiz_result(request,slug):
         return render(request, 'exam/quiz_result.html', context)
     else:
         return redirect(reverse('exam:question_list', args=[slug]))
+
+def category_view(request, slug):
+   category = get_object_or_404(Category, slug=slug, status=True)
+   quiz_list = category.quiz.filter(status=True)
+   context = {
+       'category': category,
+       'quiz_list': quiz_list,     
+   }
+   return render(request,'exam/category.html', context)

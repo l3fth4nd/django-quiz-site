@@ -1,12 +1,15 @@
 {% extends 'exam/base.html' %}
 
 
-{% block title %}لیست آزمون ها{% endblock %}
+{% block title %} {{category.title}} {% endblock %}
 
- 
+
+
 {% block content %}
+
+    <h2>{{ category.title }}</h2>
   <div class="list-group quiz-list" style=" margin-top: 50px; margin-left: 70px; margin-right: 70px;">
-    {% for quiz in object_list %}
+    {% for quiz in quiz_list %}
       <a href="{% url 'exam:question_list' quiz.slug %}" class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{ quiz.title }}</h5>
